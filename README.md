@@ -30,7 +30,6 @@ End
 ## Authors
 
 * **Raymond Biraquit** - *Backend*
-
 * **Juanito Ocumen** - *Fronend*
 
 ## License
