@@ -66,9 +66,9 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
-        // if ($request->user()->id !== $store->user_id && $request->user()->category !== 1) {
-        //   return response()->json(['error' => 'You can only edit your own Store.'], 403);
-        // }
+        if ($request->user()->id !== $store->user_id && $request->user()->category !== 1) {
+          return response()->json(['error' => 'You can only edit your own Store.'], 403);
+        }
         $store->update($request->only(['name','address', 'phone']));
         return new StoreResource($store);    
     }
@@ -81,9 +81,9 @@ class StoreController extends Controller
      */
     public function destroy(Request $request,Store $store)
     {
-      // if($request->user()->category !== 1){
-      //   return response()->json(['error' => 'Please contact admin.'], 403);
-      // }
+      if($request->user()->category !== 1){
+        return response()->json(['error' => 'Please contact admin.'], 403);
+      }
       $store ->delete();
       return response()->json(null,204);
     }
